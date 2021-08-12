@@ -1,0 +1,7 @@
+name: pReps
+version: 1.0
+author: Pedrodcp
+main: br.com.pedrodcp.preps.pReps
+commands:
+  rep:
+    aliases: [reps]

@@ -1,0 +1,25 @@
+Database:
+  mysql: false
+  host: ''
+  port: 3306
+  database: ''
+  user: ''
+  password: ''
+
+Config:
+  permissão: 'preps.use'
+  cooldown-tempo: 60 #MINUTOS
+
+Mensagens:
+  sem-permissão: '&cVocê não possui permissão para utilizar este comando.'
+  comando-params: '&cUtilize /rep <+/-/ver> <jogador>.'
+  jogador-não-encontrado: '&cEste jogador não está cadastrado no banco de dados.'
+  ponto-positivo-enviado: '&aPonto positivo enviado ao jogador %jogador%.'
+  ponto-negativo-enviado: '&cPonto negativo enviado ao jogador %jogador%.'
+  cooldown-msg: '&cVocê precisa aguardar %tempo% para enviar outro ponto.'
+  ver-pontos:
+    - ''
+    - '&6&lPONTOS DE %jogador%'
+    - '&fPositivos: &b%pontos-positivos%'
+    - '&fNegativos: &b%pontos-negativos%'
+    - ''
