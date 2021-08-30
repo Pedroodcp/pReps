@@ -1,6 +1,7 @@
 package br.com.pedrodcp.preps.commands;
 
 import br.com.pedrodcp.preps.api.RepsAPI;
+import br.com.pedrodcp.preps.managers.TimeManager;
 import br.com.pedrodcp.preps.models.Account;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -65,7 +66,7 @@ public class rep implements CommandExecutor {
                                     p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
                                 }
                             } else {
-                                p.sendMessage(getInstance().getConfig().getString("Mensagens.cooldown-msg").replace("&", "§").replace("%tempo%", getTempo(account.getCooldown() - System.currentTimeMillis())));
+                                p.sendMessage(getInstance().getConfig().getString("Mensagens.cooldown-msg").replace("&", "§").replace("%tempo%", TimeManager.getTime(account.getCooldown() - System.currentTimeMillis())));
                             }
                         }
 
@@ -105,7 +106,7 @@ public class rep implements CommandExecutor {
                                         p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
                                     }
                                 } else {
-                                    p.sendMessage(getInstance().getConfig().getString("Mensagens.cooldown-msg").replace("&", "§").replace("%tempo%", getTempo(account.getCooldown() - System.currentTimeMillis())));
+                                    p.sendMessage(getInstance().getConfig().getString("Mensagens.cooldown-msg").replace("&", "§").replace("%tempo%", TimeManager.getTime(account.getCooldown() - System.currentTimeMillis())));
                                 }
                             }
                         } else {
@@ -135,29 +136,6 @@ public class rep implements CommandExecutor {
             }
         }
         return false;
-    }
-
-    public static String getTempo(long time) {
-        long variacao = time;
-        long vsegundos = variacao / 1000L % 60L;
-        long vminutos = variacao / 60000L % 60L;
-        long vhoras = variacao / 3600000L % 24L;
-        long vdias = variacao / 86400000L % 7L;
-
-        String segundos = String.valueOf(vsegundos).replaceAll("-", "");
-        String minutos = String.valueOf(vminutos).replaceAll("-", "");
-        String horas = String.valueOf(vhoras).replaceAll("-", "");
-        String dias = String.valueOf(vdias).replaceAll("-", "");
-        if (dias.equals("0") && horas.equals("0") && minutos.equals("0")) {
-            return "" + segundos + "s";
-        }
-        if (dias.equals("0") && horas.equals("0")) {
-            return "" + minutos + "m " + segundos + "s";
-        }
-        if (dias.equals("0")) {
-            return "" + horas + "h " + minutos + "m " + segundos + "s";
-        }
-        return "" + dias + "d " + horas + "h " + minutos + "m " + segundos + "s ";
     }
 
 }

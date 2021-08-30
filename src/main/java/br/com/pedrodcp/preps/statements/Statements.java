@@ -33,7 +33,8 @@ public class Statements {
         try {
             PreparedStatement st = connection.prepareStatement("SELECT * FROM preps_pontos");
             ResultSet rs = st.executeQuery();
-            while (rs.next()) Account.accounts.add(new Account(rs.getString("nome"), rs.getInt("positivo"), rs.getInt("negativo"), rs.getLong("cooldown")));
+            while (rs.next())
+                Account.accounts.add(new Account(rs.getString("nome"), rs.getInt("positivo"), rs.getInt("negativo"), rs.getLong("cooldown")));
             rs.close();
             st.close();
         } catch (SQLException e) {
@@ -45,7 +46,7 @@ public class Statements {
         boolean exists = false;
         try {
             PreparedStatement st = connection.prepareStatement("SELECT nome FROM preps_pontos WHERE nome=?");
-            st.setString(1, playerName.toLowerCase());
+            st.setString(1, playerName);
             ResultSet rs = st.executeQuery();
             exists = rs.next();
             rs.close();
@@ -66,10 +67,10 @@ public class Statements {
                     existsStatement.setInt(1, account.getPositivo());
                     existsStatement.setInt(2, account.getNegativo());
                     existsStatement.setLong(3, account.getCooldown());
-                    existsStatement.setString(4, account.getPlayerName().toLowerCase());
+                    existsStatement.setString(4, account.getPlayerName());
                     existsStatement.executeUpdate();
-                }else {
-                    st.setString(1, account.getPlayerName().toLowerCase());
+                } else {
+                    st.setString(1, account.getPlayerName());
                     st.setInt(2, account.getPositivo());
                     st.setInt(3, account.getNegativo());
                     st.setLong(4, account.getCooldown());
