@@ -8,6 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -124,7 +125,8 @@ public class rep implements CommandExecutor {
                                         list.replaceAll(l -> l.replace("%jogador%", target.getPlayerName().toUpperCase(Locale.ROOT)));
                                         list.replaceAll(l -> l.replace("%pontos-positivos%", targetPositivos));
                                         list.replaceAll(l -> l.replace("%pontos-negativos%", targetNegativos));
-                                        p.sendMessage(String.valueOf(list));
+                                        list.replaceAll(l -> l.replace("[", "").replace("]", "").replace(",", "\n"));
+                                        p.sendMessage(list.toString());
                                     }
                                 } else {
                                     String accountPositivos = String.valueOf(account.getPositivo());
@@ -134,7 +136,8 @@ public class rep implements CommandExecutor {
                                     list.replaceAll(l -> l.replace("%jogador%", p.getName().toUpperCase(Locale.ROOT)));
                                     list.replaceAll(l -> l.replace("%pontos-positivos%", accountPositivos));
                                     list.replaceAll(l -> l.replace("%pontos-negativos%", accountNegativos));
-                                    p.sendMessage(String.valueOf(list));
+                                    list.replaceAll(l -> l.replace("[", "").replace("]", "").replace(",", "\n"));
+                                    p.sendMessage(list.toString());
                                 }
                             } else {
                                 p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
