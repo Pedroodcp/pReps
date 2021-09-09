@@ -101,7 +101,11 @@ public class Statements {
                 }
             }
         } catch (SQLException e) {
+            Bukkit.getConsoleSender().sendMessage("");
             Bukkit.getConsoleSender().sendMessage("§c[pReps - Logs] Ocorreu um erro ao tentar mostrar o TOP 10 pontos para um jogador.");
+            Bukkit.getConsoleSender().sendMessage("§cErro: " + e.getMessage());
+            Bukkit.getConsoleSender().sendMessage("§cCausa: " + e.getCause());
+            Bukkit.getConsoleSender().sendMessage("");
         }
         return tops;
     }
