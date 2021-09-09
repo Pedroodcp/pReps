@@ -97,7 +97,7 @@ public class Statements {
             while (rs.next()) {
                 if (i <= 10) {
                     i++;
-                    tops.add("§f" + i + " » " + LuckPermsProvider.get().getGroupManager().getGroup(LuckPermsProvider.get().getUserManager().getUser(rs.getString("nome")).getPrimaryGroup()).getDisplayName() + " " + rs.getString("nome") + ": §7" + rs.getInt("positivo"));
+                    tops.add("§f" + i + " » " + LuckPermsProvider.get().getGroupManager().getGroup(LuckPermsProvider.get().getUserManager().getUser(rs.getString("nome")).getPrimaryGroup()).getDisplayName().replace("&", "§") + " " + rs.getString("nome") + ": §b" + rs.getInt("positivo"));
                 }
             }
         } catch (SQLException e) {
