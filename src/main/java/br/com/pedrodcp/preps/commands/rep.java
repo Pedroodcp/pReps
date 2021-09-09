@@ -43,6 +43,7 @@ public class rep implements CommandExecutor {
                                 } else {
                                     target.setPositivo(target.getPositivo() + 1);
                                     p.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-positivo-enviado").replace("&", "§").replace("%jogador%", target.getPlayerName()));
+                                    Statements.saveAccounts();
                                     long cooldown = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
                                     account.setCooldown(System.currentTimeMillis() + cooldown);
                                 }
@@ -61,6 +62,7 @@ public class rep implements CommandExecutor {
                                     } else {
                                         target.setPositivo(target.getPositivo() + 1);
                                         p.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-positivo-enviado").replace("&", "§").replace("%jogador%", target.getPlayerName()));
+                                        Statements.saveAccounts();
                                         long cooldown = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
                                         account.setCooldown(System.currentTimeMillis() + cooldown);
                                     }
@@ -83,6 +85,7 @@ public class rep implements CommandExecutor {
                                     } else {
                                         target.setNegativo(target.getNegativo() + 1);
                                         p.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-negativo-enviado").replace("&", "§").replace("%jogador%", target.getPlayerName()));
+                                        Statements.saveAccounts();
                                         long time = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
                                         account.setCooldown(System.currentTimeMillis() + time);
                                     }
@@ -101,6 +104,7 @@ public class rep implements CommandExecutor {
                                         } else {
                                             target.setNegativo(target.getNegativo() + 1);
                                             p.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-negativo-enviado").replace("&", "§").replace("%jogador%", target.getPlayerName()));
+                                            Statements.saveAccounts();
                                             long time = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
                                             account.setCooldown(System.currentTimeMillis() + time);
                                         }
