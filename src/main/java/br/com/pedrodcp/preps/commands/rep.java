@@ -126,6 +126,9 @@ public class rep implements CommandExecutor {
                                         list.replaceAll(l -> l.replace("%jogador%", target.getPlayerName().toUpperCase(Locale.ROOT)));
                                         list.replaceAll(l -> l.replace("%pontos-positivos%", targetPositivos));
                                         list.replaceAll(l -> l.replace("%pontos-negativos%", targetNegativos));
+                                        for (String teste : list) {
+                                            p.sendMessage(teste);
+                                        }
                                         p.sendMessage(list.toString().replace("[", "").replace("]", "").replace(",", "\n"));
                                     }
                                 } else {
@@ -136,20 +139,26 @@ public class rep implements CommandExecutor {
                                     list.replaceAll(l -> l.replace("%jogador%", p.getName().toUpperCase(Locale.ROOT)));
                                     list.replaceAll(l -> l.replace("%pontos-positivos%", accountPositivos));
                                     list.replaceAll(l -> l.replace("%pontos-negativos%", accountNegativos));
+                                    for (String teste : list) {
+                                        p.sendMessage(teste);
+                                    }
                                     p.sendMessage(list.toString().replace("[", "").replace("]", "").replace(",", "\n"));
                                 }
                             } else {
-                                p.sendMessage("");
-                                p.sendMessage(Statements.getTops().toString());
-                                p.sendMessage("");
-                                p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
+                                if (option.equalsIgnoreCase("top")) {
+                                    List<String> topList = Statements.getTops();
+                                    for (String top : topList) {
+                                        p.sendMessage("");
+                                        p.sendMessage(top);
+                                        p.sendMessage("");
+                                    }
+                                } else {
+                                    p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
+                                }
                             }
                         }
                     }
                 } else {
-                    p.sendMessage("");
-                    p.sendMessage(Statements.getTops().toString());
-                    p.sendMessage("");
                     p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
                 }
             }
