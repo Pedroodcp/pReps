@@ -129,8 +129,8 @@ public class rep implements CommandExecutor {
                                         list.replaceAll(l -> l.replace("%jogador%", target.getPlayerName().toUpperCase(Locale.ROOT)));
                                         list.replaceAll(l -> l.replace("%pontos-positivos%", targetPositivos));
                                         list.replaceAll(l -> l.replace("%pontos-negativos%", targetNegativos));
-                                        for (String teste : list) {
-                                            p.sendMessage(teste);
+                                        for (String msg : list) {
+                                            p.sendMessage(msg);
                                         }
                                     }
                                 } else {
@@ -141,19 +141,19 @@ public class rep implements CommandExecutor {
                                     list.replaceAll(l -> l.replace("%jogador%", p.getName().toUpperCase(Locale.ROOT)));
                                     list.replaceAll(l -> l.replace("%pontos-positivos%", accountPositivos));
                                     list.replaceAll(l -> l.replace("%pontos-negativos%", accountNegativos));
-                                    for (String teste : list) {
-                                        p.sendMessage(teste);
+                                    for (String msg : list) {
+                                        p.sendMessage(msg);
                                     }
                                 }
                             } else {
                                 if (option.equalsIgnoreCase("top")) {
-                                    List<String> topList = Statements.getTops();
                                     p.sendMessage("");
                                     p.sendMessage("  §b§lTOP REPUTAÇÃO");
                                     p.sendMessage("");
                                     p.sendMessage("§7* Você está visualizando os jogadores com");
                                     p.sendMessage("§7* maior reputação §8positiva§7.");
                                     p.sendMessage("");
+                                    List<String> topList = Statements.getTops();
                                     for (String top : topList) {
                                         p.sendMessage(top);
                                     }

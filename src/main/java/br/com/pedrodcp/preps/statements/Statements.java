@@ -91,6 +91,7 @@ public class Statements {
         try {
             PreparedStatement stm = connection.prepareStatement("SELECT * FROM preps_pontos ORDER BY positivo DESC");
             ResultSet rs = stm.executeQuery();
+            System.out.println(rs.getString("nome"));
             int i = 0;
 
             while (rs.next()) {
