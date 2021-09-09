@@ -26,7 +26,6 @@ public class Statements {
             st.executeUpdate();
             st.close();
             loadAccounts();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
