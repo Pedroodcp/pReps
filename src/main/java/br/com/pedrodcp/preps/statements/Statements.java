@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.pedrodcp.preps.api.RepsAPI;
 import br.com.pedrodcp.preps.pReps;
 import br.com.pedrodcp.preps.models.Account;
 import org.bukkit.Bukkit;
@@ -15,7 +14,7 @@ import net.luckperms.api.LuckPermsProvider;
 
 public class Statements {
 
-    private static Connection connection;
+    public static Connection connection;
 
     private static void openConnection() {
         Statements.connection = pReps.connectionModel.getConnection();
@@ -28,6 +27,7 @@ public class Statements {
             st.executeUpdate();
             st.close();
             loadAccounts();
+            getTops();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -81,7 +81,6 @@ public class Statements {
                     st.executeUpdate();
                 }
             }
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -98,10 +97,7 @@ public class Statements {
             while (rs.next()) {
                 if (i <= 10) {
                     i++;
-                    System.out.println(rs.getString("nome"));
-                    if (RepsAPI.getAccount(rs.getString("nome")).getPositivo() != 0) {
-                        tops.add(" §7" + i + "º » " + LuckPermsProvider.get().getGroupManager().getGroup(LuckPermsProvider.get().getUserManager().getUser(rs.getString("nome")).getPrimaryGroup()).getDisplayName().replace("&", "§") + " " + rs.getString("nome") + ": §b" + rs.getInt("positivo"));
-                    }
+                    tops.add(" §7" + i + "º » " + LuckPermsProvider.get().getGroupManager().getGroup(LuckPermsProvider.get().getUserManager().getUser(rs.getString("nome")).getPrimaryGroup()).getDisplayName().replace("&", "§") + " " + rs.getString("nome") + ": §b" + rs.getInt("positivo"));
                 }
             }
         } catch (SQLException e) {

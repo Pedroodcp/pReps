@@ -11,6 +11,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.sql.SQLException;
 
 public class pReps extends JavaPlugin {
 
@@ -44,10 +45,18 @@ public class pReps extends JavaPlugin {
     @Override
     public void onDisable() {
         Statements.saveAccounts();
-        Bukkit.getConsoleSender().sendMessage("");
-        Bukkit.getConsoleSender().sendMessage("§c[pReps] Plugin desativado com sucesso.");
-        Bukkit.getConsoleSender().sendMessage("§7Armazenamento: §aSalvo");
-        Bukkit.getConsoleSender().sendMessage("");
+        try {
+            Statements.connection.close();
+            Bukkit.getConsoleSender().sendMessage("");
+            Bukkit.getConsoleSender().sendMessage("§c[pReps] Plugin desativado com sucesso.");
+            Bukkit.getConsoleSender().sendMessage("§7Armazenamento: §aSalvo");
+            Bukkit.getConsoleSender().sendMessage("");
+        } catch (SQLException e) {
+            Bukkit.getConsoleSender().sendMessage("");
+            Bukkit.getConsoleSender().sendMessage("§c[pReps] Plugin desativado com sucesso.");
+            Bukkit.getConsoleSender().sendMessage("§7Armazenamento: §cErro");
+            Bukkit.getConsoleSender().sendMessage("");
+        }
     }
 
     public void loadCommands() {
