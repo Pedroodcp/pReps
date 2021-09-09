@@ -8,6 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
@@ -118,12 +119,22 @@ public class rep implements CommandExecutor {
                                     } else {
                                         String targetPositivos = String.valueOf(target.getPositivo());
                                         String targetNegativos = String.valueOf(target.getNegativo());
-                                        p.sendMessage(getInstance().getConfig().getString("Mensagens.ver-pontos").replace("&", "§").replace("%jogador%", target.getPlayerName().toUpperCase(Locale.ROOT)).replace("%pontos-positivos%", targetPositivos).replace("%pontos-negativos%", targetNegativos).replace("[", "").replace("]", "").replace(",", "\n"));
+                                        List<String> list = getInstance().getConfig().getStringList("Mensagens.ver-pontos");
+                                        list.replaceAll(l -> l.replace("&", "§"));
+                                        list.replaceAll(l -> l.replace("%jogador%", target.getPlayerName().toUpperCase(Locale.ROOT)));
+                                        list.replaceAll(l -> l.replace("%pontos-positivos%", targetPositivos));
+                                        list.replaceAll(l -> l.replace("%pontos-negativos%", targetNegativos));
+                                        p.sendMessage(String.valueOf(list));
                                     }
                                 } else {
                                     String accountPositivos = String.valueOf(account.getPositivo());
                                     String accountNegativos = String.valueOf(account.getNegativo());
-                                    p.sendMessage(getInstance().getConfig().getString("Mensagens.ver-pontos").replace("&", "§").replace("%jogador%", p.getName().toUpperCase(Locale.ROOT)).replace("%pontos-positivos%", accountPositivos).replace("%pontos-negativos%", accountNegativos).replace("[", "").replace("]", "").replace(",", "\n"));
+                                    List<String> list = getInstance().getConfig().getStringList("Mensagens.ver-pontos");
+                                    list.replaceAll(l -> l.replace("&", "§"));
+                                    list.replaceAll(l -> l.replace("%jogador%", p.getName().toUpperCase(Locale.ROOT)));
+                                    list.replaceAll(l -> l.replace("%pontos-positivos%", accountPositivos));
+                                    list.replaceAll(l -> l.replace("%pontos-negativos%", accountNegativos));
+                                    p.sendMessage(String.valueOf(list));
                                 }
                             } else {
                                 p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
