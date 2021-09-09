@@ -95,17 +95,21 @@ public class Statements {
 
             while (rs.next()) {
                 if (rs.getString("nome") != null) {
-                    System.out.println(rs.getString("nome"));
                     if (i <= 10) {
                         i++;
-                        tops.add(" §7" + i + "º » " + LuckPermsProvider.get().getGroupManager().getGroup(LuckPermsProvider.get().getUserManager().getUser(rs.getString("nome")).getPrimaryGroup()).getDisplayName().replace("&", "§") + " " + rs.getString("nome") + ": §b" + rs.getInt("positivo"));
+                        tops.add(" §7" + i + "º » §6" + rs.getString("nome") + ": §b" + rs.getInt("positivo"));
                     }
+                } else {
+                    Bukkit.getConsoleSender().sendMessage("");
+                    Bukkit.getConsoleSender().sendMessage("§c[pReps - Logs] Ocorreu um erro ao tentar mostrar o TOP 10 pontos para um jogador.");
+                    Bukkit.getConsoleSender().sendMessage("§cRelatório: A lista de TOP jogadores não existe.");
+                    Bukkit.getConsoleSender().sendMessage("");
                 }
             }
         } catch (SQLException e) {
             Bukkit.getConsoleSender().sendMessage("");
             Bukkit.getConsoleSender().sendMessage("§c[pReps - Logs] Ocorreu um erro ao tentar mostrar o TOP 10 pontos para um jogador.");
-            Bukkit.getConsoleSender().sendMessage("§cCausa: " + e.getMessage());
+            Bukkit.getConsoleSender().sendMessage("§cRelatório: " + e.getMessage());
             Bukkit.getConsoleSender().sendMessage("");
         }
         return tops;
