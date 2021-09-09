@@ -27,7 +27,6 @@ public class Statements {
             st.executeUpdate();
             st.close();
             loadAccounts();
-            getTops();
         } catch (SQLException e) {
             e.printStackTrace();
         }
