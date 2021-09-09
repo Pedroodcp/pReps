@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.pedrodcp.preps.api.RepsAPI;
 import br.com.pedrodcp.preps.pReps;
 import br.com.pedrodcp.preps.models.Account;
 import org.bukkit.Bukkit;
@@ -97,7 +98,9 @@ public class Statements {
             while (rs.next()) {
                 if (i <= 10) {
                     i++;
-                    tops.add(" §7" + i + "º » " + LuckPermsProvider.get().getGroupManager().getGroup(LuckPermsProvider.get().getUserManager().getUser(rs.getString("nome")).getPrimaryGroup()).getDisplayName().replace("&", "§") + " " + rs.getString("nome") + ": §b" + rs.getInt("positivo"));
+                    if (RepsAPI.getAccount(rs.getString("nome")).getPositivo() != 0) {
+                        tops.add(" §7" + i + "º » " + LuckPermsProvider.get().getGroupManager().getGroup(LuckPermsProvider.get().getUserManager().getUser(rs.getString("nome")).getPrimaryGroup()).getDisplayName().replace("&", "§") + " " + rs.getString("nome") + ": §b" + rs.getInt("positivo"));
+                    }
                 }
             }
         } catch (SQLException e) {
