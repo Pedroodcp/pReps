@@ -125,8 +125,7 @@ public class rep implements CommandExecutor {
                                         list.replaceAll(l -> l.replace("%jogador%", target.getPlayerName().toUpperCase(Locale.ROOT)));
                                         list.replaceAll(l -> l.replace("%pontos-positivos%", targetPositivos));
                                         list.replaceAll(l -> l.replace("%pontos-negativos%", targetNegativos));
-                                        list.replaceAll(l -> l.replace("[", "").replace("]", "").replace(",", "\n"));
-                                        p.sendMessage(list.toString());
+                                        p.sendMessage(list.toString().replace("[", "").replace("]", "").replace(",", "\n"));
                                     }
                                 } else {
                                     String accountPositivos = String.valueOf(account.getPositivo());
@@ -136,8 +135,7 @@ public class rep implements CommandExecutor {
                                     list.replaceAll(l -> l.replace("%jogador%", p.getName().toUpperCase(Locale.ROOT)));
                                     list.replaceAll(l -> l.replace("%pontos-positivos%", accountPositivos));
                                     list.replaceAll(l -> l.replace("%pontos-negativos%", accountNegativos));
-                                    list.replaceAll(l -> l.replace("[", "").replace("]", "").replace(",", "\n"));
-                                    p.sendMessage(list.toString());
+                                    p.sendMessage(list.toString().replace("[", "").replace("]", "").replace(",", "\n"));
                                 }
                             } else {
                                 p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
