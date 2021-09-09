@@ -89,7 +89,7 @@ public class Statements {
         List<String> tops = new ArrayList<>();
 
         try {
-            PreparedStatement stm = connection.prepareStatement("SELECT positivo, RANK() over(ORDER BY positivo DESC) AS rank FROM preps_pontos");
+            PreparedStatement stm = connection.prepareStatement("SELECT * FROM preps_pontos ORDER BY positivo DESC");
             ResultSet rs = stm.executeQuery();
             int i = 0;
 
