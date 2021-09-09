@@ -144,7 +144,7 @@ public class rep implements CommandExecutor {
                             } else {
                                 if (option.equalsIgnoreCase("top")) {
                                     List<String> topList = Statements.getTops();
-                                    p.sendMessage("&3&lTOP 10 PONTOS POSITIVOS");
+                                    p.sendMessage("§3§lTOP 10 PONTOS POSITIVOS");
                                     p.sendMessage("");
                                     for (String top : topList) {
                                         p.sendMessage(top);
