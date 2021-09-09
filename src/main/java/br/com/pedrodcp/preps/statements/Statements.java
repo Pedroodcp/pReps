@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.pedrodcp.preps.pReps;
 import br.com.pedrodcp.preps.models.Account;
+import org.bukkit.Bukkit;
 
 public class Statements {
 
@@ -81,6 +84,26 @@ public class Statements {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static List<String> getTops() {
+        List<String> tops = new ArrayList<>();
+
+        try {
+            PreparedStatement stm = connection.prepareStatement("SELECT positivo, RANK() over(ORDER BY positivo DESC) AS rank FROM preps_pontos");
+            ResultSet rs = stm.executeQuery();
+            int i = 0;
+
+            while (rs.next()) {
+                if (i <= 10) {
+                    i++;
+                    tops.add("§f" + i + "° §3" + rs.getString("nome") + ": §b" + rs.getInt("positivo"));
+                }
+            }
+        } catch (SQLException e) {
+            Bukkit.getConsoleSender().sendMessage("§c[pReps - Logs] Ocorreu um erro ao tentar mostrar o TOP 10 pontos para um jogador.");
+        }
+        return tops;
     }
 
 }

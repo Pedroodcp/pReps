@@ -3,6 +3,7 @@ package br.com.pedrodcp.preps.commands;
 import br.com.pedrodcp.preps.api.RepsAPI;
 import br.com.pedrodcp.preps.managers.TimeManager;
 import br.com.pedrodcp.preps.models.Account;
+import br.com.pedrodcp.preps.statements.Statements;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -138,11 +139,17 @@ public class rep implements CommandExecutor {
                                     p.sendMessage(list.toString().replace("[", "").replace("]", "").replace(",", "\n"));
                                 }
                             } else {
+                                p.sendMessage("");
+                                p.sendMessage(Statements.getTops().toString());
+                                p.sendMessage("");
                                 p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
                             }
                         }
                     }
                 } else {
+                    p.sendMessage("");
+                    p.sendMessage(Statements.getTops().toString());
+                    p.sendMessage("");
                     p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
                 }
             }
