@@ -10,6 +10,7 @@ import java.util.List;
 import br.com.pedrodcp.preps.pReps;
 import br.com.pedrodcp.preps.models.Account;
 import org.bukkit.Bukkit;
+import net.luckperms.api.LuckPermsProvider;
 
 public class Statements {
 
@@ -96,7 +97,7 @@ public class Statements {
             while (rs.next()) {
                 if (i <= 10) {
                     i++;
-                    tops.add("§f" + i + "° §3" + rs.getString("nome") + ": §b" + rs.getInt("positivo"));
+                    tops.add("§f" + i + " » " + LuckPermsProvider.get().getGroupManager().getGroup(LuckPermsProvider.get().getUserManager().getUser(rs.getString("nome")).getPrimaryGroup()).getDisplayName() + " " + rs.getString("nome") + ": §7" + rs.getInt("positivo"));
                 }
             }
         } catch (SQLException e) {
