@@ -91,10 +91,10 @@ public class Statements {
         try {
             PreparedStatement stm = connection.prepareStatement("SELECT * FROM preps_pontos ORDER BY positivo DESC");
             ResultSet rs = stm.executeQuery();
-            System.out.println(rs.getString("nome"));
             int i = 0;
 
             while (rs.next()) {
+                System.out.println(rs.getString("nome"));
                 if (i <= 10) {
                     i++;
                     tops.add(" §7" + i + "º » " + LuckPermsProvider.get().getGroupManager().getGroup(LuckPermsProvider.get().getUserManager().getUser(rs.getString("nome")).getPrimaryGroup()).getDisplayName().replace("&", "§") + " " + rs.getString("nome") + ": §b" + rs.getInt("positivo"));
