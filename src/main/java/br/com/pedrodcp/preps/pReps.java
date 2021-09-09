@@ -44,17 +44,10 @@ public class pReps extends JavaPlugin {
     @Override
     public void onDisable() {
         Statements.saveAccounts();
-        if (getConfig().getBoolean("Database.mysql") == isEnabled()) {
-            Bukkit.getConsoleSender().sendMessage("");
-            Bukkit.getConsoleSender().sendMessage("§c[pReps] Plugin desativado com sucesso.");
-            Bukkit.getConsoleSender().sendMessage("§7Armazenamento: §aMySQL");
-            Bukkit.getConsoleSender().sendMessage("");
-        } else {
-            Bukkit.getConsoleSender().sendMessage("");
-            Bukkit.getConsoleSender().sendMessage("§c[pReps] Plugin desativado com sucesso.");
-            Bukkit.getConsoleSender().sendMessage("§7Armazenamento: §8SQLite");
-            Bukkit.getConsoleSender().sendMessage("");
-        }
+        Bukkit.getConsoleSender().sendMessage("");
+        Bukkit.getConsoleSender().sendMessage("§c[pReps] Plugin desativado com sucesso.");
+        Bukkit.getConsoleSender().sendMessage("§7Armazenamento: §aSalvo");
+        Bukkit.getConsoleSender().sendMessage("");
     }
 
     public void loadCommands() {
