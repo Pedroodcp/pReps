@@ -95,6 +95,7 @@ public class Statements {
 
             while (rs.next()) {
                 if (rs.getString("nome") != null) {
+                    System.out.println(rs.getString("nome"));
                     if (i <= 10) {
                         i++;
                         tops.add(" §7" + i + "º » " + LuckPermsProvider.get().getGroupManager().getGroup(LuckPermsProvider.get().getUserManager().getUser(rs.getString("nome")).getPrimaryGroup()).getDisplayName().replace("&", "§") + " " + rs.getString("nome") + ": §b" + rs.getInt("positivo"));
