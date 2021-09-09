@@ -12,7 +12,7 @@ Config:
 
 Mensagens:
   sem-permissão: '&cVocê não possui permissão para utilizar este comando.'
-  comando-params: '&cUtilize /rep <+/-/ver> <jogador>.'
+  comando-params: '&cUtilize /rep <+/-/ver/top> <jogador>.'
   jogador-não-encontrado: '&cEste jogador não está cadastrado no banco de dados.'
   ponto-positivo-enviado: '&aPonto positivo enviado ao jogador %jogador%.'
   ponto-negativo-enviado: '&cPonto negativo enviado ao jogador %jogador%.'
