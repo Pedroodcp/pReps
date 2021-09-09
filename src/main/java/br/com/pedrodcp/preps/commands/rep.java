@@ -144,7 +144,11 @@ public class rep implements CommandExecutor {
                             } else {
                                 if (option.equalsIgnoreCase("top")) {
                                     List<String> topList = Statements.getTops();
-                                    p.sendMessage("§3§lTOP 10 PONTOS POSITIVOS");
+                                    p.sendMessage("");
+                                    p.sendMessage("§b§lTOP REPUTAÇÃO");
+                                    p.sendMessage("");
+                                    p.sendMessage("§7* Você está visualizando os jogadores com");
+                                    p.sendMessage("§7* maior reputação §8positiva§7.");
                                     p.sendMessage("");
                                     for (String top : topList) {
                                         p.sendMessage(top);
