@@ -40,17 +40,24 @@ public class rep implements CommandExecutor {
                                 Account target = RepsAPI.getAccount(args[1]);
                                 if (target == null) {
                                     p.sendMessage(getInstance().getConfig().getString("Mensagens.jogador-não-encontrado").replace("&", "§"));
-
                                 } else {
-                                    target.setPositivo(target.getPositivo() + 1);
-                                    p.playSound(p.getLocation(), Sound.ORB_PICKUP, 5.0F, 1.0F);
-                                    p.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-positivo-enviado").replace("&", "§").replace("%jogador%", target.getPlayerName()));
-                                    Statements.saveAccounts();
-                                    long cooldown = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
-                                    account.setCooldown(System.currentTimeMillis() + cooldown);
+                                    if (target.getPlayerName().equalsIgnoreCase(p.getName())) {
+                                        p.sendMessage(getInstance().getConfig().getString("Mensagens.erro-ponto-positivo").replace("&", "§"));
+                                    } else {
+                                        target.setPositivo(target.getPositivo() + 1);
+                                        p.playSound(p.getLocation(), Sound.ORB_PICKUP, 5.0F, 1.0F);
+                                        p.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-positivo-enviado").replace("&", "§").replace("%jogador%", target.getPlayerName()));
+                                        Statements.saveAccounts();
+                                        long cooldown = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
+                                        account.setCooldown(System.currentTimeMillis() + cooldown);
+                                    }
                                 }
                             } else {
-                                p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
+                                List<String> msgList = getInstance().getConfig().getStringList("Mensagens.comando-params");
+                                msgList.replaceAll(m -> m.replace("&", "§"));
+                                for (String msg : msgList) {
+                                    p.sendMessage(msg);
+                                }
                             }
                             return false;
                         } else {
@@ -60,16 +67,23 @@ public class rep implements CommandExecutor {
                                     Account target = RepsAPI.getAccount(args[1]);
                                     if (target == null) {
                                         p.sendMessage(getInstance().getConfig().getString("Mensagens.jogador-não-encontrado").replace("&", "§"));
-
                                     } else {
-                                        target.setPositivo(target.getPositivo() + 1);
-                                        p.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-positivo-enviado").replace("&", "§").replace("%jogador%", target.getPlayerName()));
-                                        Statements.saveAccounts();
-                                        long cooldown = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
-                                        account.setCooldown(System.currentTimeMillis() + cooldown);
+                                        if (target.getPlayerName().equalsIgnoreCase(p.getName())) {
+                                            p.sendMessage(getInstance().getConfig().getString("Mensagens.erro-ponto-positivo").replace("&", "§"));
+                                        } else {
+                                            target.setPositivo(target.getPositivo() + 1);
+                                            p.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-positivo-enviado").replace("&", "§").replace("%jogador%", target.getPlayerName()));
+                                            Statements.saveAccounts();
+                                            long cooldown = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
+                                            account.setCooldown(System.currentTimeMillis() + cooldown);
+                                        }
                                     }
                                 } else {
-                                    p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
+                                    List<String> msgList = getInstance().getConfig().getStringList("Mensagens.comando-params");
+                                    msgList.replaceAll(m -> m.replace("&", "§"));
+                                    for (String msg : msgList) {
+                                        p.sendMessage(msg);
+                                    }
                                 }
                             } else {
                                 p.sendMessage(getInstance().getConfig().getString("Mensagens.cooldown-msg").replace("&", "§").replace("%tempo%", TimeManager.getTime(account.getCooldown() - System.currentTimeMillis())));
@@ -83,17 +97,24 @@ public class rep implements CommandExecutor {
                                     Account target = RepsAPI.getAccount(args[1]);
                                     if (target == null) {
                                         p.sendMessage(getInstance().getConfig().getString("Mensagens.jogador-não-encontrado").replace("&", "§"));
-
                                     } else {
-                                        target.setNegativo(target.getNegativo() + 1);
-                                        p.playSound(p.getLocation(), Sound.CLICK, 5.0F, 1.0F);
-                                        p.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-negativo-enviado").replace("&", "§").replace("%jogador%", target.getPlayerName()));
-                                        Statements.saveAccounts();
-                                        long time = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
-                                        account.setCooldown(System.currentTimeMillis() + time);
+                                        if (target.getPlayerName().equalsIgnoreCase(p.getName())) {
+                                            p.sendMessage(getInstance().getConfig().getString("Mensagens.erro-ponto-negativo").replace("&", "§"));
+                                        } else {
+                                            target.setNegativo(target.getNegativo() + 1);
+                                            p.playSound(p.getLocation(), Sound.CLICK, 5.0F, 1.0F);
+                                            p.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-negativo-enviado").replace("&", "§").replace("%jogador%", target.getPlayerName()));
+                                            Statements.saveAccounts();
+                                            long time = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
+                                            account.setCooldown(System.currentTimeMillis() + time);
+                                        }
                                     }
                                 } else {
-                                    p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
+                                    List<String> msgList = getInstance().getConfig().getStringList("Mensagens.comando-params");
+                                    msgList.replaceAll(m -> m.replace("&", "§"));
+                                    for (String msg : msgList) {
+                                        p.sendMessage(msg);
+                                    }
                                 }
                                 return false;
                             } else {
@@ -103,16 +124,23 @@ public class rep implements CommandExecutor {
                                         Account target = RepsAPI.getAccount(args[1]);
                                         if (target == null) {
                                             p.sendMessage(getInstance().getConfig().getString("Mensagens.jogador-não-encontrado").replace("&", "§"));
-
                                         } else {
-                                            target.setNegativo(target.getNegativo() + 1);
-                                            p.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-negativo-enviado").replace("&", "§").replace("%jogador%", target.getPlayerName()));
-                                            Statements.saveAccounts();
-                                            long time = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
-                                            account.setCooldown(System.currentTimeMillis() + time);
+                                            if (target.getPlayerName().equalsIgnoreCase(p.getName())) {
+                                                p.sendMessage(getInstance().getConfig().getString("Mensagens.erro-ponto-negativo").replace("&", "§"));
+                                            } else {
+                                                target.setNegativo(target.getNegativo() + 1);
+                                                p.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-negativo-enviado").replace("&", "§").replace("%jogador%", target.getPlayerName()));
+                                                Statements.saveAccounts();
+                                                long time = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
+                                                account.setCooldown(System.currentTimeMillis() + time);
+                                            }
                                         }
                                     } else {
-                                        p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
+                                        List<String> msgList = getInstance().getConfig().getStringList("Mensagens.comando-params");
+                                        msgList.replaceAll(m -> m.replace("&", "§"));
+                                        for (String msg : msgList) {
+                                            p.sendMessage(msg);
+                                        }
                                     }
                                 } else {
                                     p.sendMessage(getInstance().getConfig().getString("Mensagens.cooldown-msg").replace("&", "§").replace("%tempo%", TimeManager.getTime(account.getCooldown() - System.currentTimeMillis())));

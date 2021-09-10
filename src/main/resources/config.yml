@@ -22,6 +22,8 @@ Mensagens:
     - '  &f/rep top &7- Visualizar o TOP 10 jogadores com pontuação positiva.'
     - ''
   jogador-não-encontrado: '&cEste jogador não está cadastrado no banco de dados.'
+  erro-ponto-positivo: '&c&lEPA! &cVocê não pode enviar um ponto positivo a si mesmo.'
+  erro-ponto-negativo: '&c&lEPA! &cVocê não pode enviar um ponto negativo a si mesmo.'
   ponto-positivo-enviado: '&a&lYAY! &aVocê enviou um ponto positivo ao jogador &7%jogador%&a.'
   ponto-negativo-enviado: '&e&lEITA! &eVocê enviou um ponto negativo ao jogador &7%jogador%&e.'
   cooldown-msg: '&cVocê precisa aguardar %tempo% para enviar outro ponto.'
