@@ -10,7 +10,6 @@ import java.util.List;
 import br.com.pedrodcp.preps.pReps;
 import br.com.pedrodcp.preps.models.Account;
 import org.bukkit.Bukkit;
-import net.luckperms.api.LuckPermsProvider;
 
 public class Statements {
 

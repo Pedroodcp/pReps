@@ -31,12 +31,12 @@ public class pReps extends JavaPlugin {
         loadEvents();
         if (getConfig().getBoolean("Database.mysql") == isEnabled()) {
             Bukkit.getConsoleSender().sendMessage("");
-            Bukkit.getConsoleSender().sendMessage("§a[pReps] Plugin carregado com sucesso.");
+            Bukkit.getConsoleSender().sendMessage("§a[pReps] Sistema carregado com sucesso.");
             Bukkit.getConsoleSender().sendMessage("§7Detectado: §aMySQL");
             Bukkit.getConsoleSender().sendMessage("");
         } else {
             Bukkit.getConsoleSender().sendMessage("");
-            Bukkit.getConsoleSender().sendMessage("§a[pReps] Plugin carregado com sucesso.");
+            Bukkit.getConsoleSender().sendMessage("§a[pReps] Sistema carregado com sucesso.");
             Bukkit.getConsoleSender().sendMessage("§7Detectado: §8SQLite");
             Bukkit.getConsoleSender().sendMessage("");
         }
@@ -48,12 +48,12 @@ public class pReps extends JavaPlugin {
         try {
             Statements.connection.close();
             Bukkit.getConsoleSender().sendMessage("");
-            Bukkit.getConsoleSender().sendMessage("§c[pReps] Plugin desativado com sucesso.");
+            Bukkit.getConsoleSender().sendMessage("§c[pReps] Sistema desativado com sucesso.");
             Bukkit.getConsoleSender().sendMessage("§7Armazenamento: §aSalvo");
             Bukkit.getConsoleSender().sendMessage("");
         } catch (SQLException e) {
             Bukkit.getConsoleSender().sendMessage("");
-            Bukkit.getConsoleSender().sendMessage("§c[pReps] Plugin desativado com sucesso.");
+            Bukkit.getConsoleSender().sendMessage("§c[pReps] Sistema desativado sem sucesso.");
             Bukkit.getConsoleSender().sendMessage("§7Armazenamento: §cErro");
             Bukkit.getConsoleSender().sendMessage("");
         }

@@ -147,17 +147,13 @@ public class rep implements CommandExecutor {
                                 }
                             } else {
                                 if (option.equalsIgnoreCase("top")) {
-                                    p.sendMessage("");
-                                    p.sendMessage(" §b§lTOP REPUTAÇÃO");
-                                    p.sendMessage("");
-                                    p.sendMessage(" §7* Você está visualizando os jogadores com");
-                                    p.sendMessage(" §7* maior reputação §8positiva§7.");
-                                    p.sendMessage("");
+                                    List<String> lines = getInstance().getConfig().getStringList("Mensagens.msg-top");
+                                    lines.replaceAll(l -> l.replace("&", "§"));
                                     List<String> topList = Statements.getTops();
-                                    for (String top : topList) {
-                                        p.sendMessage(top);
+                                    lines.replaceAll(l -> l.replace("%top10%", topList.toString().replace("[", "").replace("]", "").replace(", ", "\n")));
+                                    for (String msg : lines) {
+                                        p.sendMessage(msg);
                                     }
-                                    p.sendMessage("");
                                 } else {
                                     p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
                                 }
