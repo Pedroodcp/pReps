@@ -28,6 +28,7 @@ public class pReps extends JavaPlugin {
         connectionModel = getConfig().getBoolean("Database.mysql") ? new MySQLConnection(getConfig().getString("Database.host"), getConfig().getInt("Database.port"), getConfig().getString("Database.database"), getConfig().getString("Database.user"), getConfig().getString("Database.password")) : new SQLiteConnection();
         Statements.initialize();
         loadCommands();
+        loadConfig();
         loadEvents();
         if (getConfig().getBoolean("Database.mysql") == isEnabled()) {
             Bukkit.getConsoleSender().sendMessage("");
@@ -44,8 +45,9 @@ public class pReps extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        Statements.saveAccounts();
+        saveDefaultConfig();
         try {
+            Statements.saveAccounts();
             Statements.connection.close();
             Bukkit.getConsoleSender().sendMessage("");
             Bukkit.getConsoleSender().sendMessage("§c[pReps] Sistema desativado com sucesso.");
@@ -61,6 +63,11 @@ public class pReps extends JavaPlugin {
 
     public void loadCommands() {
         getCommand("rep").setExecutor(new rep());
+    }
+
+    public void loadConfig() {
+        getConfig().options().copyDefaults(false);
+        saveDefaultConfig();
     }
 
     public void loadEvents() {
