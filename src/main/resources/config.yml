@@ -33,3 +33,6 @@ Mensagens:
     - ''
     - '%top10%'
     - ''
+
+Top-config:
+  msg: ' &7 %rank%º » &6%jogador%: &b%pontos-positivos%'

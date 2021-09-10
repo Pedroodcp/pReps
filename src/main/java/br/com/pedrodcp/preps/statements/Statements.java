@@ -96,7 +96,13 @@ public class Statements {
                 if (rs.getString("nome") != null) {
                     if (i <= 10) {
                         i++;
-                        tops.add(" §7" + i + "º » §6" + rs.getString("nome") + ": §b" + rs.getInt("positivo"));
+                        tops.add(pReps.getInstance().getConfig().getString("Top-config.msg")
+                                .replace("&", "§")
+                                .replace("%rank%", String.valueOf(i))
+                                .replace("%jogador%", rs.getString("nome"))
+                                .replace("%pontos-positivos%", String.valueOf(rs.getInt("positivo")))
+                        );
+                        //tops.add(" §7" + i + "º » §6" + rs.getString("nome") + ": §b" + rs.getInt("positivo"));
                     }
                 } else {
                     Bukkit.getConsoleSender().sendMessage("");
