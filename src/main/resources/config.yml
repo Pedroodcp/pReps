@@ -19,7 +19,7 @@ Mensagens:
     - '  &f/rep ver <jogador> &7- Visualizar a reputação de um jogador.'
     - '  &f/rep + <jogador> &7- Enviar um ponto positivo para um jogador.'
     - '  &f/rep - <jogador> &7- Enviar um ponto negativo para um jogador.'
-    - '  &f/rep top &7- Visualizar o TOP 10 jogadores com pontuação &8positiva&7.'
+    - '  &f/rep top &7- Visualizar o TOP 10 jogadores com pontuação positiva.'
     - ''
   jogador-não-encontrado: '&cEste jogador não está cadastrado no banco de dados.'
   ponto-positivo-enviado: '&a&lYAY! &aVocê enviou um ponto positivo ao jogador %jogador%.'
