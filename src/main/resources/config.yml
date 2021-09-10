@@ -26,8 +26,8 @@ Mensagens:
   msg-top:
     - ' &b&lTOP REPUTAÇÃO'
     - ''
-    - ' &7* Você está visualizando os jogadores com'
-    - ' &7* maior reputação &8positiva&7.'
+    - ' &7* Você está visualizando os TOP 10 jogadores'
+    - ' &7* com maior reputação &8positiva&7.'
     - ''
     - '%top10%'
     - ''
