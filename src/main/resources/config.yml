@@ -21,8 +21,8 @@ Mensagens:
     - ''
     - ' &6&lPONTOS DE %jogador%'
     - ''
-    - ' &b* &fPositivos: &a%pontos-positivos%'
-    - ' &b* &fNegativos: &c%pontos-negativos%'
+    - '  &b* &fPositivos: &a%pontos-positivos%'
+    - '  &b* &fNegativos: &c%pontos-negativos%'
     - ''
   msg-top:
     - ''
