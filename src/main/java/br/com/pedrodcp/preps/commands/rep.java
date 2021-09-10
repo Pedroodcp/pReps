@@ -4,6 +4,7 @@ import br.com.pedrodcp.preps.api.RepsAPI;
 import br.com.pedrodcp.preps.managers.TimeManager;
 import br.com.pedrodcp.preps.models.Account;
 import br.com.pedrodcp.preps.statements.Statements;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -42,6 +43,7 @@ public class rep implements CommandExecutor {
 
                                 } else {
                                     target.setPositivo(target.getPositivo() + 1);
+                                    p.playSound(p.getLocation(), Sound.ORB_PICKUP, 5.0F, 1.0F);
                                     p.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-positivo-enviado").replace("&", "§").replace("%jogador%", target.getPlayerName()));
                                     Statements.saveAccounts();
                                     long cooldown = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
@@ -84,6 +86,7 @@ public class rep implements CommandExecutor {
 
                                     } else {
                                         target.setNegativo(target.getNegativo() + 1);
+                                        p.playSound(p.getLocation(), Sound.CLICK, 5.0F, 1.0F);
                                         p.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-negativo-enviado").replace("&", "§").replace("%jogador%", target.getPlayerName()));
                                         Statements.saveAccounts();
                                         long time = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
@@ -155,13 +158,21 @@ public class rep implements CommandExecutor {
                                         p.sendMessage(msg);
                                     }
                                 } else {
-                                    p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
+                                    List<String> msgList = getInstance().getConfig().getStringList("Mensagens.comando-params");
+                                    msgList.replaceAll(m -> m.replace("&", "§"));
+                                    for (String msg : msgList) {
+                                        p.sendMessage(msg);
+                                    }
                                 }
                             }
                         }
                     }
                 } else {
-                    p.sendMessage(getInstance().getConfig().getString("Mensagens.comando-params").replace("&", "§"));
+                    List<String> msgList = getInstance().getConfig().getStringList("Mensagens.comando-params");
+                    msgList.replaceAll(m -> m.replace("&", "§"));
+                    for (String msg : msgList) {
+                        p.sendMessage(msg);
+                    }
                 }
             }
         }
