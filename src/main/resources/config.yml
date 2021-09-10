@@ -19,9 +19,10 @@ Mensagens:
   cooldown-msg: '&cVocê precisa aguardar %tempo% para enviar outro ponto.'
   ver-pontos:
     - ''
-    - '&6&lPONTOS DE %jogador%'
-    - '&fPositivos: &b%pontos-positivos%'
-    - '&fNegativos: &b%pontos-negativos%'
+    - ' &6&lPONTOS DE %jogador%'
+    - ''
+    - ' &b* &fPositivos: &a%pontos-positivos%'
+    - ' &b* &fNegativos: &c%pontos-negativos%'
     - ''
   msg-top:
     - ' &b&lTOP REPUTAÇÃO'
