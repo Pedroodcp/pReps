@@ -39,9 +39,11 @@ public class rep implements CommandExecutor {
                             if (args.length >= 2) {
                                 Account target = RepsAPI.getAccount(args[1]);
                                 if (target == null) {
+                                    p.playSound(p.getLocation(), Sound.VILLAGER_NO, 5.0F, 1.0F);
                                     p.sendMessage(getInstance().getConfig().getString("Mensagens.jogador-não-encontrado").replace("&", "§"));
                                 } else {
                                     if (target.getPlayerName().equalsIgnoreCase(p.getName())) {
+                                        p.playSound(p.getLocation(), Sound.VILLAGER_NO, 5.0F, 1.0F);
                                         p.sendMessage(getInstance().getConfig().getString("Mensagens.erro-ponto-positivo").replace("&", "§"));
                                     } else {
                                         target.setPositivo(target.getPositivo() + 1);
@@ -66,12 +68,15 @@ public class rep implements CommandExecutor {
                                 if (args.length >= 2) {
                                     Account target = RepsAPI.getAccount(args[1]);
                                     if (target == null) {
+                                        p.playSound(p.getLocation(), Sound.VILLAGER_NO, 5.0F, 1.0F);
                                         p.sendMessage(getInstance().getConfig().getString("Mensagens.jogador-não-encontrado").replace("&", "§"));
                                     } else {
                                         if (target.getPlayerName().equalsIgnoreCase(p.getName())) {
+                                            p.playSound(p.getLocation(), Sound.VILLAGER_NO, 5.0F, 1.0F);
                                             p.sendMessage(getInstance().getConfig().getString("Mensagens.erro-ponto-positivo").replace("&", "§"));
                                         } else {
                                             target.setPositivo(target.getPositivo() + 1);
+                                            p.playSound(p.getLocation(), Sound.ORB_PICKUP, 5.0F, 1.0F);
                                             p.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-positivo-enviado").replace("&", "§").replace("%jogador%", target.getPlayerName()));
                                             Statements.saveAccounts();
                                             long cooldown = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
@@ -96,9 +101,11 @@ public class rep implements CommandExecutor {
                                 if (args.length >= 2) {
                                     Account target = RepsAPI.getAccount(args[1]);
                                     if (target == null) {
+                                        p.playSound(p.getLocation(), Sound.VILLAGER_NO, 5.0F, 1.0F);
                                         p.sendMessage(getInstance().getConfig().getString("Mensagens.jogador-não-encontrado").replace("&", "§"));
                                     } else {
                                         if (target.getPlayerName().equalsIgnoreCase(p.getName())) {
+                                            p.playSound(p.getLocation(), Sound.VILLAGER_NO, 5.0F, 1.0F);
                                             p.sendMessage(getInstance().getConfig().getString("Mensagens.erro-ponto-negativo").replace("&", "§"));
                                         } else {
                                             target.setNegativo(target.getNegativo() + 1);
@@ -123,12 +130,15 @@ public class rep implements CommandExecutor {
                                     if (args.length >= 2) {
                                         Account target = RepsAPI.getAccount(args[1]);
                                         if (target == null) {
+                                            p.playSound(p.getLocation(), Sound.VILLAGER_NO, 5.0F, 1.0F);
                                             p.sendMessage(getInstance().getConfig().getString("Mensagens.jogador-não-encontrado").replace("&", "§"));
                                         } else {
                                             if (target.getPlayerName().equalsIgnoreCase(p.getName())) {
+                                                p.playSound(p.getLocation(), Sound.VILLAGER_NO, 5.0F, 1.0F);
                                                 p.sendMessage(getInstance().getConfig().getString("Mensagens.erro-ponto-negativo").replace("&", "§"));
                                             } else {
                                                 target.setNegativo(target.getNegativo() + 1);
+                                                p.playSound(p.getLocation(), Sound.CLICK, 5.0F, 1.0F);
                                                 p.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-negativo-enviado").replace("&", "§").replace("%jogador%", target.getPlayerName()));
                                                 Statements.saveAccounts();
                                                 long time = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
