@@ -6,6 +6,7 @@ import br.com.pedrodcp.preps.models.database.ConnectionModel;
 import br.com.pedrodcp.preps.models.database.MySQLConnection;
 import br.com.pedrodcp.preps.models.database.SQLiteConnection;
 import br.com.pedrodcp.preps.statements.Statements;
+import br.com.pedrodcp.preps.updater.AutoUpdate;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -32,15 +33,16 @@ public class pReps extends JavaPlugin {
         loadEvents();
         if (getConfig().getBoolean("Database.mysql") == isEnabled()) {
             Bukkit.getConsoleSender().sendMessage("");
-            Bukkit.getConsoleSender().sendMessage("§a[pReps] Sistema carregado com sucesso.");
+            Bukkit.getConsoleSender().sendMessage("§a[pReps] Sistema carregado com sucesso!");
             Bukkit.getConsoleSender().sendMessage("§7Detectado: §aMySQL");
             Bukkit.getConsoleSender().sendMessage("");
         } else {
             Bukkit.getConsoleSender().sendMessage("");
-            Bukkit.getConsoleSender().sendMessage("§a[pReps] Sistema carregado com sucesso.");
+            Bukkit.getConsoleSender().sendMessage("§a[pReps] Sistema carregado com sucesso!");
             Bukkit.getConsoleSender().sendMessage("§7Detectado: §8SQLite");
             Bukkit.getConsoleSender().sendMessage("");
         }
+        new AutoUpdate(this,"https://api.spigotmc.org/legacy/update.php?resource=96330.txt","https://drive.google.com/uc?export=download&id=1pHnrH9jtm0oLNM-l80BW_5WoH1BQ-LWa", true);
     }
 
     @Override
@@ -55,7 +57,7 @@ public class pReps extends JavaPlugin {
             Bukkit.getConsoleSender().sendMessage("");
         } catch (SQLException e) {
             Bukkit.getConsoleSender().sendMessage("");
-            Bukkit.getConsoleSender().sendMessage("§c[pReps] Sistema desativado sem sucesso.");
+            Bukkit.getConsoleSender().sendMessage("§c[pReps] Sistema desativado com erro no armazenamento.");
             Bukkit.getConsoleSender().sendMessage("§7Armazenamento: §cErro");
             Bukkit.getConsoleSender().sendMessage("");
         }
@@ -78,4 +80,5 @@ public class pReps extends JavaPlugin {
     public static pReps getInstance() {
         return instance;
     }
+
 }

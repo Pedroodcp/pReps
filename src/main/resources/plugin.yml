@@ -1,7 +1,8 @@
 name: pReps
-version: 1.0
+version: 2.6
 author: Pedrodcp
 main: br.com.pedrodcp.preps.pReps
+website: https://github.com/pReps
 commands:
   rep:
     aliases: [reps]

@@ -26,7 +26,6 @@ public class Statements {
             st.executeUpdate();
             st.close();
             loadAccounts();
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -108,14 +107,14 @@ public class Statements {
                 } else {
                     Bukkit.getConsoleSender().sendMessage("");
                     Bukkit.getConsoleSender().sendMessage("§c[pReps - Logs] Ocorreu um erro ao tentar mostrar o TOP 10 pontos para um jogador.");
-                    Bukkit.getConsoleSender().sendMessage("§cRelatório: A lista de TOP jogadores não existe.");
+                    Bukkit.getConsoleSender().sendMessage("§cRelatório: §7A lista de TOP jogadores não existe.");
                     Bukkit.getConsoleSender().sendMessage("");
                 }
             }
         } catch (SQLException e) {
             Bukkit.getConsoleSender().sendMessage("");
             Bukkit.getConsoleSender().sendMessage("§c[pReps - Logs] Ocorreu um erro ao tentar mostrar o TOP 10 pontos para um jogador.");
-            Bukkit.getConsoleSender().sendMessage("§cRelatório: " + e.getMessage());
+            Bukkit.getConsoleSender().sendMessage("§cRelatório: §7" + e.getMessage());
             Bukkit.getConsoleSender().sendMessage("");
         }
         return tops;
