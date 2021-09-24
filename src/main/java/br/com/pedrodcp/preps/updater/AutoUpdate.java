@@ -22,7 +22,7 @@ public class AutoUpdate {
 
     private boolean autoDownload;
 
-    private String BroadCastMessage = "Reinicie o plugin para que a nova atualizacao seja implementada.";
+    private String BroadcastMessage = "Reinicie o plugin para que a nova atualizacao seja implementada.";
 
     public AutoUpdate(Plugin plugin, String UrlVersion, String UrlDownload) {
         this(plugin, UrlVersion, UrlDownload, true);
@@ -86,7 +86,7 @@ public class AutoUpdate {
             Bukkit.getConsoleSender().sendMessage("§9[pReps] A nova versao foi instalada!");
             Bukkit.getConsoleSender().sendMessage("§9[pReps] §7Download: §a100%");
             Bukkit.getConsoleSender().sendMessage("");
-            Bukkit.getConsoleSender().sendMessage("§9[pReps] Aviso: §7" + BroadCastMessage);
+            Bukkit.getConsoleSender().sendMessage("§9[pReps] Aviso: §7" + BroadcastMessage);
             Bukkit.getConsoleSender().sendMessage("");
             return true;
         } catch (IOException e) {
