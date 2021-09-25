@@ -102,7 +102,6 @@ public class Statements {
                                 .replace("%jogador%", rs.getString("nome"))
                                 .replace("%pontos-positivos%", String.valueOf(rs.getInt("positivo")))
                         );
-                        //tops.add(" §7" + i + "º » §6" + rs.getString("nome") + ": §b" + rs.getInt("positivo"));
                     }
                 } else {
                     Bukkit.getConsoleSender().sendMessage("");
