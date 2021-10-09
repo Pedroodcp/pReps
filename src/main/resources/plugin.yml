@@ -1,7 +1,7 @@
-name: pReps
+name: Project
 version: 2.6
 author: Pedrodcp
-main: br.com.pedrodcp.preps.pReps
+main: br.com.pedrodcp.preps.Project
 website: https://github.com/pReps
 commands:
   rep:

@@ -1,6 +1,6 @@
 package br.com.pedrodcp.preps.models.database;
 
-import br.com.pedrodcp.preps.pReps;
+import br.com.pedrodcp.preps.Project;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,7 +12,7 @@ public class SQLiteConnection implements ConnectionModel {
     public Connection getConnection() {
         try {
             Class.forName("org.sqlite.JDBC");
-            return DriverManager.getConnection("jdbc:sqlite:" + pReps.getInstance().database);
+            return DriverManager.getConnection("jdbc:sqlite:" + Project.getInstance().database);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

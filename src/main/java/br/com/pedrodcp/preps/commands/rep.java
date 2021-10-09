@@ -4,6 +4,7 @@ import br.com.pedrodcp.preps.api.RepsAPI;
 import br.com.pedrodcp.preps.managers.TimeManager;
 import br.com.pedrodcp.preps.models.Account;
 import br.com.pedrodcp.preps.statements.Statements;
+import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-import static br.com.pedrodcp.preps.pReps.*;
+import static br.com.pedrodcp.preps.Project.*;
 
 public class rep implements CommandExecutor {
 
@@ -52,6 +53,14 @@ public class rep implements CommandExecutor {
                                         Statements.saveAccounts();
                                         long cooldown = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
                                         account.setCooldown(System.currentTimeMillis() + cooldown);
+                                        if (Bukkit.getPlayer(target.getPlayerName()) != null) {
+                                            Player playerTarget = Bukkit.getPlayer(target.getPlayerName());
+                                            playerTarget.playSound(p.getLocation(), Sound.ORB_PICKUP, 5.0F, 1.0F);
+                                            playerTarget.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-positivo-recebido")
+                                                    .replace("&", "§")
+                                                    .replace("%jogador%", p.getName())
+                                            );
+                                        }
                                     }
                                 }
                             } else {
@@ -81,6 +90,14 @@ public class rep implements CommandExecutor {
                                             Statements.saveAccounts();
                                             long cooldown = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
                                             account.setCooldown(System.currentTimeMillis() + cooldown);
+                                            if (Bukkit.getPlayer(target.getPlayerName()) != null) {
+                                                Player playerTarget = Bukkit.getPlayer(target.getPlayerName());
+                                                playerTarget.playSound(p.getLocation(), Sound.ORB_PICKUP, 5.0F, 1.0F);
+                                                playerTarget.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-positivo-recebido")
+                                                        .replace("&", "§")
+                                                        .replace("%jogador%", p.getName())
+                                                );
+                                            }
                                         }
                                     }
                                 } else {
@@ -114,6 +131,14 @@ public class rep implements CommandExecutor {
                                             Statements.saveAccounts();
                                             long time = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
                                             account.setCooldown(System.currentTimeMillis() + time);
+                                            if (Bukkit.getPlayer(target.getPlayerName()) != null) {
+                                                Player playerTarget = Bukkit.getPlayer(target.getPlayerName());
+                                                playerTarget.playSound(p.getLocation(), Sound.CLICK, 5.0F, 1.0F);
+                                                playerTarget.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-negativo-recebido")
+                                                        .replace("&", "§")
+                                                        .replace("%jogador%", p.getName())
+                                                );
+                                            }
                                         }
                                     }
                                 } else {
@@ -143,6 +168,14 @@ public class rep implements CommandExecutor {
                                                 Statements.saveAccounts();
                                                 long time = TimeUnit.MILLISECONDS.convert(getInstance().getConfig().getInt("Config.cooldown-tempo"), TimeUnit.MINUTES);
                                                 account.setCooldown(System.currentTimeMillis() + time);
+                                                if (Bukkit.getPlayer(target.getPlayerName()) != null) {
+                                                    Player playerTarget = Bukkit.getPlayer(target.getPlayerName());
+                                                    playerTarget.playSound(p.getLocation(), Sound.CLICK, 5.0F, 1.0F);
+                                                    playerTarget.sendMessage(getInstance().getConfig().getString("Mensagens.ponto-negativo-recebido")
+                                                            .replace("&", "§")
+                                                            .replace("%jogador%", p.getName())
+                                                    );
+                                                }
                                             }
                                         }
                                     } else {

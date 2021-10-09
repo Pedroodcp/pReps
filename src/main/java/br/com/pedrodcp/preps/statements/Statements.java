@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.pedrodcp.preps.pReps;
+import br.com.pedrodcp.preps.Project;
 import br.com.pedrodcp.preps.models.Account;
 import org.bukkit.Bukkit;
 
@@ -16,7 +16,7 @@ public class Statements {
     public static Connection connection;
 
     private static void openConnection() {
-        Statements.connection = pReps.connectionModel.getConnection();
+        Statements.connection = Project.connectionModel.getConnection();
     }
 
     public static void initialize() {
@@ -96,7 +96,7 @@ public class Statements {
                 if (rs.getString("nome") != null) {
                     if (i <= 10) {
                         i++;
-                        tops.add(pReps.getInstance().getConfig().getString("Top-config.msg")
+                        tops.add(Project.getInstance().getConfig().getString("Top-config.msg")
                                 .replace("&", "§")
                                 .replace("%rank%", String.valueOf(i))
                                 .replace("%jogador%", rs.getString("nome"))
@@ -105,14 +105,14 @@ public class Statements {
                     }
                 } else {
                     Bukkit.getConsoleSender().sendMessage("");
-                    Bukkit.getConsoleSender().sendMessage("§c[pReps - Logs] Ocorreu um erro ao tentar mostrar o TOP 10 pontos para um jogador.");
+                    Bukkit.getConsoleSender().sendMessage("§c[Project - Logs] Ocorreu um erro ao tentar mostrar o TOP 10 pontos para um jogador.");
                     Bukkit.getConsoleSender().sendMessage("§cRelatório: §7A lista de TOP jogadores não existe.");
                     Bukkit.getConsoleSender().sendMessage("");
                 }
             }
         } catch (SQLException e) {
             Bukkit.getConsoleSender().sendMessage("");
-            Bukkit.getConsoleSender().sendMessage("§c[pReps - Logs] Ocorreu um erro ao tentar mostrar o TOP 10 pontos para um jogador.");
+            Bukkit.getConsoleSender().sendMessage("§c[Project - Logs] Ocorreu um erro ao tentar mostrar o TOP 10 pontos para um jogador.");
             Bukkit.getConsoleSender().sendMessage("§cRelatório: §7" + e.getMessage());
             Bukkit.getConsoleSender().sendMessage("");
         }
