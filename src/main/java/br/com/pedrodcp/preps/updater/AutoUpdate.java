@@ -41,17 +41,17 @@ public class AutoUpdate {
         try {
             v = getText(urlVersionCheck);
         } catch (Exception e) {
-            Bukkit.getConsoleSender().sendMessage("§c[Project] Ocorreu um erro ao detectar uma nova versao para o sistema.");
+            Bukkit.getConsoleSender().sendMessage("§c[pReps] Ocorreu um erro ao detectar uma nova versao para o sistema.");
         }
         if (!v.equalsIgnoreCase(currentVersion)) {
             Bukkit.getConsoleSender().sendMessage("");
-            Bukkit.getConsoleSender().sendMessage("§e[Project] Atualizacao disponivel! - (§c" + Project.getInstance().getDescription().getVersion() + " §e» §a" + v + "§e)");
-            Bukkit.getConsoleSender().sendMessage("§e[Project] Download: §7Instalando...");
+            Bukkit.getConsoleSender().sendMessage("§e[pReps] Atualizacao disponivel! - (§c" + Project.getInstance().getDescription().getVersion() + " §e» §a" + v + "§e)");
+            Bukkit.getConsoleSender().sendMessage("§e[pReps] Download: §7Instalando...");
             Bukkit.getConsoleSender().sendMessage("");
             if (autoDownload)
                 startDownload();
         } else {
-            Bukkit.getConsoleSender().sendMessage("§e[Project] Nenhuma nova versao foi encontrada.");
+            Bukkit.getConsoleSender().sendMessage("§e[pReps] Nenhuma nova versao foi encontrada.");
         }
     }
 
@@ -61,7 +61,7 @@ public class AutoUpdate {
             BufferedInputStream in = null;
             FileOutputStream fout = null;
             try {
-                Bukkit.getConsoleSender().sendMessage("§8[Project] Baixando nova versao...");
+                Bukkit.getConsoleSender().sendMessage("§8[pReps] Baixando nova versao...");
                 in = new BufferedInputStream(download.openStream());
                 fout = new FileOutputStream("plugins" + System.getProperty("file.separator") + plugin.getName() + ".jar");
 
@@ -71,7 +71,7 @@ public class AutoUpdate {
                     fout.write(data, 0, count);
                 }
             } catch (Exception e) {
-                Bukkit.getConsoleSender().sendMessage("§8[Project] Nao foi possivel prosseguir com a atualizacao do plugin.");
+                Bukkit.getConsoleSender().sendMessage("§8[pReps] Nao foi possivel prosseguir com a atualizacao do plugin.");
                 return false;
             } finally {
                 if (in != null) {
@@ -82,14 +82,14 @@ public class AutoUpdate {
                 }
             }
             Bukkit.getConsoleSender().sendMessage("");
-            Bukkit.getConsoleSender().sendMessage("§9[Project] A nova versao foi instalada!");
-            Bukkit.getConsoleSender().sendMessage("§9[Project] §7Download: §a100%");
+            Bukkit.getConsoleSender().sendMessage("§9[pReps] A nova versao foi instalada!");
+            Bukkit.getConsoleSender().sendMessage("§9[pReps] §7Download: §a100%");
             Bukkit.getConsoleSender().sendMessage("");
-            Bukkit.getConsoleSender().sendMessage("§9[Project] Aviso: §7" + BroadcastMessage);
+            Bukkit.getConsoleSender().sendMessage("§9[pReps] Aviso: §7" + BroadcastMessage);
             Bukkit.getConsoleSender().sendMessage("");
             return true;
         } catch (IOException e) {
-            Bukkit.getConsoleSender().sendMessage("§8[Project] Nao foi possivel prosseguir com a atualizacao do plugin.");
+            Bukkit.getConsoleSender().sendMessage("§8[pReps] Nao foi possivel prosseguir com a atualizacao do plugin.");
             return false;
         }
     }
